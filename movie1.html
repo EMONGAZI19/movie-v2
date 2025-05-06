@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            background-color: #FFCCE5;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .thumbnail {
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #FFCC00;
+            margin-bottom: 30px;
+        }
+
+        .episode-title {
+            color: #FFCC00;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 22px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .links {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .links a {
+            display: block;
+            color: #FF3366;
+            text-decoration: underline;
+            font-size: 20px;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .links a:hover {
+            color: #00FFFF;
+        }
+
+        .links a:visited {
+            color: #9999FF;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #555;
+            margin: 20px 0;
+        }
+
+        .sponsor {
+            background-color: #222;
+            padding: 15px;
+            border-radius: %;
+            margin-top: px;
+            text-align: center;
+            box-shadow: 0 0 10px #444;
+        }
+
+        .sponsor a {
+            color: #00FFFF;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sponsor span {
+            color: #FFCC00;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .drama-details {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .drama-details h2 {
+            font-size: 30px;
+            color: #FFCC00;
+        }
+
+        .drama-details p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .screenshots {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .screenshots h2 {
+            color: #FFCC00;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .screenshots img {
+            width: 300px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #222;
+            transition: transform 0.3s;
+        }
+
+        .screenshots img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Stylish Popup */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background: linear-gradient(145deg, #222, #333);
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            animation: popupFade 0.5s ease;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        .popup-content h2 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #00FFFF;
+        }
+
+        .popup-content a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #FF3366;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .popup-content a:hover {
+            background-color: #ff6699;
+        }
+
+        .popup-content button {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background-color: transparent;
+            color: #ccc;
+            border: 1px solid #555;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .popup-content button:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        @keyframes popupFade {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+  
+  <!-- Thumbnail -->
+<img class="thumbnail" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhL5YVBDtpRzw4yZmMSuirp7fVC0eEa1M9P8V27f0CcEaa5gkd9idsTaQTVB8tISvmFgXw_a54faOcvtYuPQOAsBUOYMuo7QN5d1PIG_iztrm6JrpUwAQDXJIwg7FqIHSCh_Zgb74CrSFus8QK09f_9QDsLx76vyc0ncbyuVlSau1TgBlJJY-TAss0I5sM/s1906/IMG34T437.jpg" alt="Drama Thumbnail" width="1280" height="720">
+
+<!-- Title -->
+<h1></h1>
+
+<!-- Drama Details -->
+<div class="drama-details">
+    <h2>Forget You Remember Love</h2>
+    <p><strong>Genre:</strong>Comedy, Romance, Life, Drama</p>
+    <p><strong>Episodes:</strong> 38</p>
+    <p><strong>Plot:</strong> an ordinary girl who rescues the CEO of Senwell after he loses his memory in a severe car accident. Shan Jun Hao is the CEO of Senwell. He's a successful hard-hitting, ruthless, arrogant leader who never takes half measures to achieve what he wants.</p>
+</div>
+
+<!-- Screenshots Section -->
+<div class="screenshots">
+    <h2>Screenshots</h2>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizTzEBrqBGLujt1J4GsjkAVA5oCHH-s4G5at9T8HYQR3j6HPSqBwu-WDAcz7B4ERJYhi1W2pHIlEE6-czhmuzyD1dSAg2oU8uuqdsLOOMYH39ZzA1pkJxAYHraotSG6UcsHAhPtjGrtZE9Fave6BP-JfJ7TYxPn4eJH5xmAgcMPt5VNQpq6RyE8KKN7MA/s1280/IMG34T437%20(1).png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivsDcP_sLCyrHQTnq1Pg-zTK19MRbJNyLBnUggfE_2kjfwHOm0Q01hjcftde8cms-VWxoGBPcJqRzoHNQLVBA0Ar-7iwi0_j8zGOfONSPErC9XXxI-DaVjPq9Ny52mVW7Fkyqvny2lwAB-7ctOjXVDCa8K8V3QV8OVobVufliQ384DT4maATvBLZDh5B0/s1280/IMG34T437%20(2).png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9-HchIshbU7cSw8o92z3fzWC-1LLJGBCIg8YEx2wVDtkxksWxmu3A5OIfBAIAAuskJYKSOP9WjVsEBOH5RMMb3oOj3rcoEa1PSLEfHJH7rfLuwPEtyFtFQac-zgWxWoORWA_XVHyUGFIWlQEAReizGcoQH0fJ8Sd5sAnKhwAh1YdgqCX3W9lWaiDSmvk/s1280/IMG34T437%20(3).png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNzUFj2IfgCuWH89_Q7CBTDRHOKRCJ8lDONciwQyPKNNijA9027wJLZ2N3BIe0mpbbV1Q2FZDFsEPXULMX81-NdaOfvV646wjQ-Jsh4jAsZuWow1z1bPtjyMlhyphenhyphenbTQ3wSKITjbUfZSnjAy26T67HWhbU57QEJNqFwIj21YBntRdKZlJV2qQMSTG6R6a_Q/s1280/IMG34T437%20(4).png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggph2Ewb-HJYQLpSO7OwAktNiMP6k-fbAxayrh7IzS1vu_FDymmgk-PH7UIjzv_H5Z07Qd-gTddZcqjC_aPy9e6ajj5HQ2MDcQRtnlGl_iRa8oeJ550qXuZxJeaorayWnSbZaNNhQK2zJVxoe3Gw75y-45wYRBaFOkIVYP5xkjvenQ3lX-oFtobnxAKyI/s1280/IMG34T437%20(5).png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBrh-y0DTNg-dcdSRq-lte1Tuqv9geXDcTNLRnDbH9z3tC01FXw3K9961kqt6IYrzSRsfkQv79UX61J65DQksIXWKjyTpqs7-5YNlRIdbNHQnMJrhgVuVIaVyTzftkBRcyZsDveagIC5UWbpsSS88eM3ig4HCBshGVgnAh611Jh4_RQCrjd8V6V_EKb_A/s1280/IMG34T437%20(6).png">
+</div>
+  <!-- Episodes List -->
+<div>
+      <!-- All Episodes Section -->
+<h2 style="text-align: center; color: #FF3366; font-size: 30px; margin-top: 50px; margin-bottom: 30px;">⬇️EPISODE HERE⬇️</h2>
+  
+  <!-- Episodes List -->
+<div>
+    <div class="episode-title">Episode 01</div>
+    <div class="links"><a href="https://xcloud.click/7efc425bec5b1aa">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 02</div>
+    <div class="links"><a href="https://xcloud.click/24e6f47ee50abbb">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 03</div>
+    <div class="links"><a href="https://xcloud.click/bf421cfba61d1b3">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 04</div>
+    <div class="links"><a href="https://xcloud.click/39bdb817568e039">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 05</div>
+    <div class="links"><a href="https://xcloud.click/c5d4576c34c2efd">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 06</div>
+    <div class="links"><a href="https://xcloud.click/fd0fc6cc61876c5">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 07</div>
+    <div class="links"><a href="https://xcloud.click/acb09ceaf7a1db1">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 08</div>
+    <div class="links"><a href="https://xcloud.click/c32b138c4d2fb53">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 09</div>
+    <div class="links"><a href="https://xcloud.click/50ff53e76360158">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 10</div>
+    <div class="links"><a href="https://xcloud.click/aab48b607b68e2e">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 11</div>
+    <div class="links"><a href="https://xcloud.click/498f7b61757e524">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 12</div>
+    <div class="links"><a href="https://xcloud.click/c4dc73694b84cb7">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 13</div>
+    <div class="links"><a href="https://xcloud.click/365dfecae2d10db">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 14</div>
+    <div class="links"><a href="https://xcloud.click/e674b7c38dfcca4">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 15</div>
+    <div class="links"><a href="https://xcloud.click/7467963ce430884">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 16</div>
+    <div class="links"><a href="https://xcloud.click/e3b56ee2cb0f89d">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 17</div>
+    <div class="links"><a href="https://xcloud.click/d5bcb1f4033d729">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 18</div>
+    <div class="links"><a href="https://xcloud.click/d40751cad05dfc7">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 19</div>
+    <div class="links"><a href="https://xcloud.click/647963ac5867c1d">XCloud</a></div>
+    <hr>
+    <div class="episode-title">Episode 20</div>
+    <div class="links"><a href="https://xcloud.click/262909eac76b364">XCloud</a></div>
+</div>
+  
+  
+<!-- Popup -->
+<div id="popup">
+    <div class="popup-content">
+        <h2>Hey Drama Lover!</h2>
+        <p>Join our Telegram group for updates, requests, and more exclusive content.</p>
+        <a href="https://t.me/mydramaworld2" target="_blank">Join Telegram</a>
+        <br>
+        <button onclick="document.getElementById('popup').style.display = 'none'">Close</button>
+    </div>
+</div>
+
+<!-- Sponsor -->
+<div class="sponsor">
+    <span>Join US</span><br>
+    <a href="https://t.me/mydramaworld2" target="_blank">@MyDramaWorld</a>
+</div>
+
+<!-- Script -->
+<script>
+    setTimeout(function() {
+        document.getElementById('popup').style.display = 'flex';
+    }, 3000);
+</script>
+
+</body>
+</html>
