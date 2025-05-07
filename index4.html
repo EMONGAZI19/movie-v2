@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visit Website</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ffee;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .btn {
+      font-size: 1rem;
+      padding: 10px 22px;
+      background-color: #00ffee;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00ffee80;
+    }
+
+    .btn:hover {
+      background-color: #00ccbb;
+      box-shadow: 0 0 20px #00ffeeaa;
+    }
+
+    .main-content {
+      text-align: center;
+      animation: fadeInUp 1.2s ease-out;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visit-link {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      text-decoration: none;
+      color: #00ffee;
+      border: 3px solid #00ffee;
+      padding: 20px 50px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffee, 0 0 40px #00ffee33;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .visit-link:hover {
+      background-color: #00ffee;
+      color: #000;
+      box-shadow: 0 0 30px #00ffee, 0 0 60px #00ffee66;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #ffffffcc;
+    }
+
+    .footer {
+      padding: 30px 0 20px;
+      text-align: center;
+    }
+
+    .social-buttons a {
+      margin: 10px;
+      font-size: 1rem;
+      padding: 12px 25px;
+      background-color: #444;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-block;
+      box-shadow: 0 0 10px #ffffff33;
+    }
+
+    .social-buttons a:hover {
+      background-color: #00ffee;
+      color: #000;
+      box-shadow: 0 0 20px #00ffeeaa;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .visit-link {
+        font-size: 2.5rem;
+        padding: 15px 30px;
+      }
+      .subtitle {
+        font-size: 1.4rem;
+      }
+      .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">
+      <!-- Optional Logo Image -->
+      <!-- <img src="your-logo-url.png" alt="Logo" height="40"> -->
+      My Drama World
+    </a>
+    <a href="https://t.me/your_request_form_or_email" target="_blank" class="btn">মুভি রিকুয়েস্ট</a>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <a href="https://mydramaworld2.blogspot.com" target="_blank" class="visit-link">Visit Website</a>
+    <div class="subtitle">My Drama World</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="social-buttons">
+      <a href="https://t.me/your_channel_link" target="_blank">Join Telegram</a>
+      <a href="https://chat.whatsapp.com/your_group_link" target="_blank">Join WhatsApp</a>
+    </div>
+  </div>
+</body>
+</html>
