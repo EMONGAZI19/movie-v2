@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request a Movie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+      color: white;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      box-shadow: 0 2px 5px #00ffee33;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ffee;
+      text-decoration: none;
+    }
+
+    .btn {
+      font-size: 1rem;
+      padding: 10px 22px;
+      background-color: #00ffee;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00ffee80;
+    }
+
+    .btn:hover {
+      background-color: #00ccbb;
+      box-shadow: 0 0 20px #00ffeeaa;
+    }
+
+    .notice-bar {
+      background-color: #111;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    .notice-label {
+      margin-right: 10px;
+      padding: 5px 15px;
+      background-color: #00ffee;
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .notice-marquee {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .notice-marquee marquee {
+      color: #00ffee;
+    }
+
+    .request-form {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #111111;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffee66;
+      border: 1px solid #00ffee44;
+    }
+
+    .request-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00ffee;
+      font-size: 1.8rem;
+    }
+
+    .request-form input,
+    .request-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      background: #222;
+      color: #fff;
+      box-shadow: inset 0 0 5px #00ffee33;
+    }
+
+    .request-form input::placeholder,
+    .request-form textarea::placeholder {
+      color: #aaa;
+    }
+
+    .request-form button {
+      width: 100%;
+      padding: 12px;
+      background: #00ffee;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ffee88;
+      transition: 0.3s ease;
+    }
+
+    .request-form button:hover {
+      background: #00ccbb;
+      box-shadow: 0 0 20px #00ffeeaa;
+    }
+
+    .request-msg {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #000;
+      color: #888;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      margin-top: auto;
+      border-top: 1px solid #333;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 1.2rem;
+      }
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">My Drama World</a>
+    <a href="https://mydramaworld2.blogspot.com" class="btn" target="_blank">Visit Website</a>
+  </header>
+
+  <!-- Notice -->
+  <div class="notice-bar">
+    <div class="notice-label">Notice:</div>
+    <div class="notice-marquee">
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+        নতুন মুভি প্রতিদিন আপডেট করা হয়! আমাদের ওয়েবসাইট এবং চ্যানেল ফলো করুন! আজকের আপলোড: 'New Korean Drama EP12', 'Hindi Dubbed Thriller', আরও চেক করুন...
+      </marquee>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="request-form">
+    <h2>Movie / Drama Request</h2>
+    <form id="movie-request-form">
+      <input type="text" name="user_name" placeholder="Your Name" required />
+      <input type="phone" name="phone" placeholder="Your Phone Number" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="drama_name" placeholder="Requested Movie / Drama Name" required />
+      <textarea name="message" rows="5" placeholder="Additional Message or Details"></textarea>
+      <button type="submit">Submit Request</button>
+      <div class="request-msg" id="result-message"></div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 My Drama World. All rights reserved.
+  </footer>
+
+  <!-- EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("x5OHkbIpVsvztciEQ"); // Your public key
+    })();
+
+    document.getElementById("movie-request-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm('service_2s4nkks', 'template_13qwgce', this)
+        .then(function(response) {
+          document.getElementById("result-message").innerText = "Your request has been sent successfully!";
+          document.getElementById("result-message").style.color = "#00ff88";
+          document.getElementById("movie-request-form").reset();
+        }, function(error) {
+          document.getElementById("result-message").innerText = "Something went wrong! Please try again.";
+          document.getElementById("result-message").style.color = "red";
+        });
+    });
+  </script>
+</body>
+</html>
