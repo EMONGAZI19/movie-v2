@@ -1,216 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Movie Flix</title>
+  <title>Movie Post - My Drama World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap');
-
     body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+      color: white;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
-      font-family: 'Roboto', sans-serif;
-      display: flex;
-      flex-direction: column;
-      color: white;
-    }
+    }header, footer {
+  background-color: #000;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px #00ffee33;
+}
 
-    header {
-      width: 100%;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-sizing: border-box;
-    }
+.logo {
+  font-size: 1.5rem;
+  color: #00ffee;
+  font-weight: bold;
+  text-decoration: none;
+}
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #00ffee;
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-    }
+.btn {
+  background-color: #00ffee;
+  padding: 10px 22px;
+  color: #000;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00ffee88;
+}
 
-    .btn {
-      font-size: 1rem;
-      padding: 10px 22px;
-      background-color: #00ffee;
-      color: #000;
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px #00ffee80;
-    }
+.movie-container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffee22;
+}
 
-    .btn:hover {
-      background-color: #00ccbb;
-      box-shadow: 0 0 20px #00ffeeaa;
-    }
+.movie-thumbnail {
+  width: 100%;
+  border-radius: 10px;
+}
 
-    .notice-bar {
-      background-color: #111;
-      padding: 10px;
-      color: #00ffee;
-      font-size: 1rem;
-      font-weight: bold;
-      border-top: 1px solid #333;
-      border-bottom: 1px solid #333;
-      display: flex;
-      align-items: center;
-    }
+.movie-details {
+  margin-top: 20px;
+}
 
-    .notice-label {
-      margin-right: 10px;
-      padding: 5px 15px;
-      background-color: #00ffee;
-      color: #000;
-      border-radius: 5px;
-      font-weight: bold;
-    }
+.movie-details h2 {
+  color: #00ffee;
+}
 
-    .notice-marquee {
-      flex: 1;
-      overflow: hidden;
-    }
+.movie-details ul {
+  list-style: none;
+  padding: 0;
+}
 
-    .notice-marquee marquee {
-      color: #00ffee;
-    }
+.movie-details ul li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
 
-    .main-content {
-      text-align: center;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      animation: fadeInUp 1.2s ease-out;
-    }
+.screenshots {
+  margin-top: 30px;
+}
 
-    .visit-link {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
-      text-decoration: none;
-      color: #00ffee;
-      border: 3px solid #00ffee;
-      padding: 20px 50px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #00ffee, 0 0 40px #00ffee33;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
+.screenshots h3 {
+  color: #00ffee;
+  margin-bottom: 15px;
+}
 
-    .visit-link:hover {
-      background-color: #00ffee;
-      color: #000;
-      box-shadow: 0 0 30px #00ffee, 0 0 60px #00ffee66;
-    }
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
 
-    .subtitle {
-      margin-top: 20px;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      color: #ffffffcc;
-    }
+.screenshots-grid img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00ffee22;
+}
 
-    .social-section {
-      margin-top: auto;
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.download-section {
+  margin-top: 40px;
+}
 
-    .social-buttons a {
-      margin: 10px;
-      font-size: 1rem;
-      padding: 12px 25px;
-      background-color: #444;
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: 0.3s;
-      display: inline-block;
-      box-shadow: 0 0 10px #ffffff33;
-    }
+.download-section h3 {
+  color: #00ffee;
+}
 
-    .social-buttons a:hover {
-      background-color: #00ffee;
-      color: #000;
-      box-shadow: 0 0 20px #00ffeeaa;
-    }
+.download-links a {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  padding: 10px 20px;
+  background-color: #00ffee;
+  color: #000;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ffee88;
+}
 
-    footer {
-      background-color: #000;
-      color: #888;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 0.9rem;
-      border-top: 1px solid #333;
-    }
+footer {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .visit-link {
-        font-size: 2.5rem;
-        padding: 15px 30px;
-      }
-      .subtitle {
-        font-size: 1.4rem;
-      }
-      .btn {
-        font-size: 0.9rem;
-        padding: 8px 16px;
-      }
-    }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
     <a href="#" class="logo">My Drama World</a>
-    <a href="https://t.me/your_request_form_or_email" target="_blank" class="btn">Request a Movie</a>
-  </header>
+    <a href="https://mydramaworld2.blogspot.com" class="btn" target="_blank">Visit Website</a>
+  </header>  <!-- Movie Content -->  <div class="movie-container">
+    <img src="https://m.media-amazon.com/images/M/MV5BNDY1ZWQyNjMtYTJjMC00ZjM3LTk3MWItMTcwNjg4ODZmODZhXkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="Movie Thumbnail" class="movie-thumbnail"><div class="movie-details">
+  <h2>Borbaad (2025)</h2>
+  <ul>
+    <li><strong>Quality:</strong> 1080p, 720p, 480p</li>
+    <li><strong>Duration:</strong> 2h 15min</li>
+    <li><strong>Language:</strong> Bengali Dubbed</li>
+    <li><strong>Release Date:</strong> May 1, 2025</li>
+    <li><strong>Plot:</strong> এই সিনেমাটি একটি রোমাঞ্চকর গল্প যেখানে একজন গোয়েন্দা হত্যা রহস্য উদঘাটনের চেষ্টা করে।</li>
+  </ul>
+</div>
 
-  <!-- Notice Bar -->
-  <div class="notice-bar">
-    <div class="notice-label">Notice:</div>
-    <div class="notice-marquee">
-      <marquee behavior="scroll" direction="left" scrollamount="5">
-        নতুন মুভি প্রতিদিন আপডেট করা হয়! আমাদের ওয়েবসাইট এবং চ্যানেল ফলো করুন,আপনার মুভিটি খুজে না পেলে মুভি রিকুয়েষ্ট বাটনে থেকে রিকুয়েষ্ট করুন,
-      </marquee>
-    </div>
+<div class="screenshots">
+  <h3>Screenshots</h3>
+  <div class="screenshots-grid">
+    <img src="https://m.media-amazon.com/images/M/MV5BODIzMGM0YjMtYWQwZC00ZTE4LWFjYzItMjczN2E2Yzc5NjRmXkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="screenshot1">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2I0MThlMzUtNDcyYy00MzY5LWI0YTctY2NiNDk5MDAwMTVhXkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="screenshot2">
+    <img src="https://m.media-amazon.com/images/M/MV5BNGJmOGJmODYtMTg1OC00ZTY5LWJkMzAtYzA4YWE0MTAxOTAzXkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="screenshot3">
+    <img src="https://m.media-amazon.com/images/M/MV5BYmQzOGI0ODAtMDVmMy00YzAwLWI0MTUtMWZhZTViOGQxZTI2XkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="screenshot4">
+    <img src="https://m.media-amazon.com/images/M/MV5BZGY2ZDUwMTAtZGM1Mi00Nzc1LWJhNGYtYWJiYWY2MmFjMzU4XkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="screenshot5">
+    <img src="https://m.media-amazon.com/images/M/MV5BYmY3ZDk1N2MtMGE4Zi00MTJkLWI3ZTQtZjk5NjM5ZWRjYzc4XkEyXkFqcGc@._V1_QL75_UX704_.jpg" alt="screenshot6">
   </div>
+</div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <a href="https://mydramaworld2.blogspot.com" target="_blank" class="visit-link">Visit Website</a>
-    <div class="subtitle">My Drama World</div>
+<div class="download-section">
+  <h3>Download Links</h3>
+  <div class="download-links">
+    <a href="#">Download 480p</a>
+    <a href="#">Download 720p</a>
+    <a href="#">Download 1080p</a>
   </div>
+</div>
 
-  <!-- Social Section -->
-  <div class="social-section">
-    <div class="social-buttons">
-      <a href="https://t.me/your_channel_link" target="_blank">Join Telegram</a>
-      <a href="https://chat.whatsapp.com/your_group_link" target="_blank">Join WhatsApp</a>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
+  </div>  <!-- Footer -->  <footer>
     &copy; 2025 My Drama World. All rights reserved.
   </footer>
 </body>
