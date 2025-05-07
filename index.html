@@ -1,32 +1,53 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ভিজিট ওয়েবসাইট</title>
+    <title>Visit Website</title>
     <style>
         body {
             margin: 0;
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #000;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
             height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
         }
-        a {
-            font-size: 5rem;
+        a.visit-link {
+            font-size: 4rem;
+            color: #fff;
             text-decoration: none;
-            color: #ffffff;
-            transition: color 0.3s ease;
+            padding: 20px 40px;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-in-out;
         }
-        a:hover {
-            color: #00ffcc;
+        a.visit-link:hover {
+            background-color: #00ffcc;
+            color: #000;
+            border-color: #00ffcc;
+        }
+        .subtitle {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: #aaa;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <a href="https://mydramaworld2.blogspot.com" target="_blank">ভিজিট ওয়েবসাইট</a>
+    <a href="https://mydramaworld2.blogspot.com" target="_blank" class="visit-link">Visit Website</a>
+    <div class="subtitle">My Drama World</div>
 </body>
 </html>
