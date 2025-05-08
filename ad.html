@@ -2,30 +2,54 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>মুভি ডাউনলোডের ধাপ</title>
+  <title>মুভি ডাউনলোড ধাপ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 20px; background: #111; color: #fff; }
+    body { background: #111; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+    h1 { font-size: 22px; margin-bottom: 10px; }
     .step { display: none; }
     .step.active { display: block; }
-    .ad-box { background: #222; padding: 20px; margin: 15px 0; border: 1px dashed #555; }
-    .timer { font-size: 24px; margin: 10px 0; color: #f55; }
-    button { padding: 10px 20px; font-size: 18px; background: crimson; color: #fff; border: none; cursor: pointer; display: none; }
+    .ad-box { margin: 10px 0; background: #222; padding: 10px; border: 1px dashed #444; }
+    .timer { font-size: 24px; color: #f55; margin: 10px 0; }
+    button { padding: 10px 20px; font-size: 18px; background: crimson; color: white; border: none; cursor: pointer; display: none; }
   </style>
 </head>
 <body>
 
-  <h1>মুভি ডাউনলোডের পূর্বে ধাপ সম্পন্ন করুন</h1>
+  <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
 
   <div id="steps">
     <!-- Step 1 -->
     <div class="step active" id="step1">
       <div class="ad-box">
-        <!-- Adestra banner ad -->
-        <div id="banner1"></div>
+        <!-- Adestra Ad -->
+        <script type="text/javascript">
+          atOptions = {
+            'key': '2e060440709f9cae261a03ac2b7e1e39',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2e060440709f9cae261a03ac2b7e1e39/invoke.js"></script>
       </div>
+
       <h2>Step 1 of 3</h2>
-      <div class="ad-box">নিচের বিজ্ঞাপন দেখুন</div>
+
+      <div class="ad-box">
+        <script type="text/javascript">
+          atOptions = {
+            'key': '2e060440709f9cae261a03ac2b7e1e39',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2e060440709f9cae261a03ac2b7e1e39/invoke.js"></script>
+      </div>
+
       <div class="timer" id="timer1">২০</div>
       <button onclick="nextStep()">পরবর্তী ধাপ</button>
     </div>
@@ -33,11 +57,33 @@
     <!-- Step 2 -->
     <div class="step" id="step2">
       <div class="ad-box">
-        <!-- Repeat banner or change div id -->
-        <div id="banner2"></div>
+        <script type="text/javascript">
+          atOptions = {
+            'key': '2e060440709f9cae261a03ac2b7e1e39',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2e060440709f9cae261a03ac2b7e1e39/invoke.js"></script>
       </div>
+
       <h2>Step 2 of 3</h2>
-      <div class="ad-box">নিচের বিজ্ঞাপন দেখুন</div>
+
+      <div class="ad-box">
+        <script type="text/javascript">
+          atOptions = {
+            'key': '2e060440709f9cae261a03ac2b7e1e39',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2e060440709f9cae261a03ac2b7e1e39/invoke.js"></script>
+      </div>
+
       <div class="timer" id="timer2">২০</div>
       <button onclick="nextStep()">পরবর্তী ধাপ</button>
     </div>
@@ -45,58 +91,74 @@
     <!-- Step 3 -->
     <div class="step" id="step3">
       <div class="ad-box">
-        <div id="banner3"></div>
+        <script type="text/javascript">
+          atOptions = {
+            'key': '2e060440709f9cae261a03ac2b7e1e39',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2e060440709f9cae261a03ac2b7e1e39/invoke.js"></script>
       </div>
+
       <h2>Step 3 of 3</h2>
-      <div class="ad-box">নিচের বিজ্ঞাপন দেখুন</div>
+
+      <div class="ad-box">
+        <script type="text/javascript">
+          atOptions = {
+            'key': '2e060440709f9cae261a03ac2b7e1e39',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2e060440709f9cae261a03ac2b7e1e39/invoke.js"></script>
+      </div>
+
       <div class="timer" id="timer3">২০</div>
-      <button onclick="goToTarget()">মূল পেজে যান</button>
+      <button onclick="goToAd()">মূল পেজে যান</button>
     </div>
   </div>
 
-  <!-- Adestra banner script (runs once, shows in all banners) -->
-  <script type="text/javascript">
-    atOptions = {
-      'key' : 'd6315d188b82d8f058b5795d825d11e8',
-      'format' : 'iframe',
-      'height' : 300,
-      'width' : 160,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/d6315d188b82d8f058b5795d825d11e8/invoke.js"></script>
-
   <script>
+    const movieLinks = {
+      "dkf83kdi2kdlsl2": "/borbaad.html",
+      "a7dks73djd": "/pathaan.html"
+    };
+
     const steps = document.querySelectorAll('.step');
     let currentStep = 0;
-
-    // Token -> Page mapping
-    const links = {
-      "dkf83kdi2kdlsl2": "borbaad.html",
-      "hd3jf9fj9fj23f": "movie2.html",
-      "skd8e3f3j9d9s9": "movie3.html"
-    };
+    let target = "";
 
     const params = new URLSearchParams(window.location.search);
     const ref = params.get("ref");
-    const targetPage = links[ref];
 
-    if (!targetPage) {
-      document.body.innerHTML = "<h2>ভুল বা অবৈধ লিংক</h2>";
+    if (!ref || !movieLinks[ref]) {
+      document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
     } else {
-      startTimer(1);
+      target = movieLinks[ref];
+
+      if (sessionStorage.getItem("adPassed") === "yes") {
+        sessionStorage.removeItem("adPassed");
+        window.location.href = target;
+      } else {
+        startTimer(1);
+      }
     }
 
-    function startTimer(stepNum) {
-      const timerEl = document.getElementById(`timer${stepNum}`);
+    function startTimer(step) {
+      const timerEl = document.getElementById("timer" + step);
       const btn = timerEl.nextElementSibling;
-      let timeLeft = 20;
-      timerEl.textContent = timeLeft;
+      let count = 20;
+      timerEl.textContent = count;
 
       const countdown = setInterval(() => {
-        timeLeft--;
-        timerEl.textContent = timeLeft;
-        if (timeLeft <= 0) {
+        count--;
+        timerEl.textContent = count;
+        if (count <= 0) {
           clearInterval(countdown);
           btn.style.display = "inline-block";
         }
@@ -110,12 +172,9 @@
       startTimer(currentStep + 1);
     }
 
-    function goToTarget() {
-      // প্রথমে ad link → ব্যাক করলে target page
+    function goToAd() {
+      sessionStorage.setItem("adPassed", "yes");
       window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
-      setTimeout(() => {
-        window.location.href = targetPage;
-      }, 1000);
     }
   </script>
 
