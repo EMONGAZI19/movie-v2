@@ -18,30 +18,53 @@
   <h1>মুভি ডাউনলোডের পূর্বে ধাপ সম্পন্ন করুন</h1>
 
   <div id="steps">
+    <!-- Step 1 -->
     <div class="step active" id="step1">
-      <div class="ad-box">Ad 1 - উপরের বিজ্ঞাপন</div>
+      <div class="ad-box">
+        <!-- Adestra banner ad -->
+        <div id="banner1"></div>
+      </div>
       <h2>Step 1 of 3</h2>
-      <div class="ad-box">Ad নিচে</div>
+      <div class="ad-box">নিচের বিজ্ঞাপন দেখুন</div>
       <div class="timer" id="timer1">২০</div>
       <button onclick="nextStep()">পরবর্তী ধাপ</button>
     </div>
 
+    <!-- Step 2 -->
     <div class="step" id="step2">
-      <div class="ad-box">Ad 2 - উপরের বিজ্ঞাপন</div>
+      <div class="ad-box">
+        <!-- Repeat banner or change div id -->
+        <div id="banner2"></div>
+      </div>
       <h2>Step 2 of 3</h2>
-      <div class="ad-box">Ad নিচে</div>
+      <div class="ad-box">নিচের বিজ্ঞাপন দেখুন</div>
       <div class="timer" id="timer2">২০</div>
       <button onclick="nextStep()">পরবর্তী ধাপ</button>
     </div>
 
+    <!-- Step 3 -->
     <div class="step" id="step3">
-      <div class="ad-box">Ad 3 - উপরের বিজ্ঞাপন</div>
+      <div class="ad-box">
+        <div id="banner3"></div>
+      </div>
       <h2>Step 3 of 3</h2>
-      <div class="ad-box">Ad নিচে</div>
+      <div class="ad-box">নিচের বিজ্ঞাপন দেখুন</div>
       <div class="timer" id="timer3">২০</div>
       <button onclick="goToTarget()">মূল পেজে যান</button>
     </div>
   </div>
+
+  <!-- Adestra banner script (runs once, shows in all banners) -->
+  <script type="text/javascript">
+    atOptions = {
+      'key' : 'd6315d188b82d8f058b5795d825d11e8',
+      'format' : 'iframe',
+      'height' : 300,
+      'width' : 160,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/d6315d188b82d8f058b5795d825d11e8/invoke.js"></script>
 
   <script>
     const steps = document.querySelectorAll('.step');
@@ -88,7 +111,7 @@
     }
 
     function goToTarget() {
-      // প্রথমে বিজ্ঞাপন লিংকে পাঠান, তারপর ব্যাক করলে মূল লিংকে যাবে
+      // প্রথমে ad link → ব্যাক করলে target page
       window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
       setTimeout(() => {
         window.location.href = targetPage;
