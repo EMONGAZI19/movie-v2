@@ -9,127 +9,119 @@
     h1 { font-size: 22px; margin-bottom: 10px; }
     .step { display: none; }
     .step.active { display: block; }
-    .download-banner { margin: 15px 0; }
-    .download-banner img {
-      width: 80%;
-      max-width: 400px;
-      cursor: pointer;
-      border: 3px solid #444;
-      border-radius: 10px;
-    }
+    .ad-box { margin: 10px 0; background: #222; padding: 10px; border: 1px dashed #444; }
     .timer { font-size: 24px; color: #f55; margin: 10px 0; }
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      background: crimson;
-      color: white;
-      border: none;
-      cursor: pointer;
-      display: none;
-    }
+    button { padding: 10px 20px; font-size: 18px; background: crimson; color: white; border: none; cursor: pointer; display: none; }
+    .download-img { width: 100%; cursor: pointer; }
   </style>
 </head>
 <body>
 
-<h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
+  <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
 
-<div id="steps">
-  <div class="step" id="step1">
-    <h2>Step 1 of 3</h2>
-    <div class="download-banner">
-      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdDone(1)">
-        <img src="Download.png" alt="Download">
-      </a>
+  <div id="steps">
+    <!-- Step 1 -->
+    <div class="step active" id="step1">
+      <h2>Step 1 of 3</h2>
+      <div class="ad-box">
+        <!-- Download Image - Step 1 -->
+        <img src="https://via.placeholder.com/468x60.png" alt="Download Ad" class="download-img" onclick="handleAdClick(1)">
+      </div>
+      <div class="timer" id="timer1">২০</div>
+      <button id="btn1" onclick="nextStep(1)" style="display:none;">পরবর্তী ধাপ</button>
     </div>
-    <div class="timer" id="timer1">২০</div>
-    <button id="btn1" onclick="nextStep()">পরবর্তী ধাপ</button>
+
+    <!-- Step 2 -->
+    <div class="step" id="step2">
+      <h2>Step 2 of 3</h2>
+      <div class="ad-box">
+        <!-- Download Image - Step 2 -->
+        <img src="https://via.placeholder.com/468x60.png" alt="Download Ad" class="download-img" onclick="handleAdClick(2)">
+      </div>
+      <div class="timer" id="timer2">২০</div>
+      <button id="btn2" onclick="nextStep(2)" style="display:none;">পরবর্তী ধাপ</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step" id="step3">
+      <h2>Step 3 of 3</h2>
+      <div class="ad-box">
+        <!-- Download Image - Step 3 -->
+        <img src="https://via.placeholder.com/468x60.png" alt="Download Ad" class="download-img" onclick="handleAdClick(3)">
+      </div>
+      <div class="timer" id="timer3">২০</div>
+      <button id="btn3" onclick="goToDownloadPage()">মূল পেজে যান</button>
+    </div>
   </div>
 
-  <div class="step" id="step2">
-    <h2>Step 2 of 3</h2>
-    <div class="download-banner">
-      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdDone(2)">
-        <img src="Download.png" alt="Download">
-      </a>
-    </div>
-    <div class="timer" id="timer2">২০</div>
-    <button id="btn2" onclick="nextStep()">পরবর্তী ধাপ</button>
-  </div>
+  <script>
+    const movieLinks = {
+      "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
+      "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
+    };
 
-  <div class="step" id="step3">
-    <h2>Step 3 of 3</h2>
-    <div class="download-banner">
-      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdDone(3)">
-        <img src="Download.png" alt="Download">
-      </a>
-    </div>
-    <div class="timer" id="timer3">২০</div>
-    <button id="btn3" onclick="goToMain()">মূল পেজে যান</button>
-  </div>
-</div>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+    let target = "";
 
-<script>
-  const movieLinks = {
-    "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
-    "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
-  };
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
 
-  const params = new URLSearchParams(window.location.search);
-  const ref = params.get("ref");
-  let currentStep = parseInt(sessionStorage.getItem("step")) || 1;
+    if (!ref || !movieLinks[ref]) {
+      document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
+    } else {
+      target = movieLinks[ref];
 
-  if (!ref || !movieLinks[ref]) {
-    document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
-  } else {
-    showStep(currentStep);
-    startTimer(currentStep);
-  }
-
-  function showStep(stepNum) {
-    document.querySelectorAll('.step').forEach((step, i) => {
-      step.classList.toggle('active', i === stepNum - 1);
-    });
-  }
-
-  function markAdDone(stepNum) {
-    sessionStorage.setItem("ad_done_step_" + stepNum, "yes");
-  }
-
-  function startTimer(stepNum) {
-    const timerEl = document.getElementById("timer" + stepNum);
-    const btnEl = document.getElementById("btn" + stepNum);
-    let count = 20;
-
-    timerEl.textContent = count;
-    btnEl.style.display = "none";
-
-    const countdown = setInterval(() => {
-      count--;
-      timerEl.textContent = count;
-      if (count <= 0) {
-        clearInterval(countdown);
-        // Show button only if ad was clicked
-        if (sessionStorage.getItem("ad_done_step_" + stepNum) === "yes") {
-          btnEl.style.display = "inline-block";
-        }
+      if (sessionStorage.getItem("adPassed") === "yes") {
+        sessionStorage.removeItem("adPassed");
+        window.location.href = target;
+      } else {
+        startTimer(1);
       }
-    }, 1000);
-  }
-
-  function nextStep() {
-    if (currentStep < 3) {
-      currentStep++;
-      sessionStorage.setItem("step", currentStep);
-      showStep(currentStep);
-      startTimer(currentStep);
     }
-  }
 
-  function goToMain() {
-    sessionStorage.clear();
-    window.location.href = movieLinks[ref];
-  }
-</script>
+    function startTimer(step) {
+      const timerEl = document.getElementById("timer" + step);
+      const btn = document.getElementById("btn" + step);
+      let count = 20;
+      timerEl.textContent = count;
+
+      const countdown = setInterval(() => {
+        count--;
+        timerEl.textContent = count;
+        if (count <= 0) {
+          clearInterval(countdown);
+          checkAdThenShowButton(step, btn);
+        }
+      }, 1000);
+    }
+
+    function checkAdThenShowButton(step, btnEl) {
+      const checkInterval = setInterval(() => {
+        if (sessionStorage.getItem("ad_done_step_" + step) === "yes") {
+          btnEl.style.display = "inline-block";
+          clearInterval(checkInterval);
+        }
+      }, 1000);
+    }
+
+    function handleAdClick(step) {
+      sessionStorage.setItem("ad_done_step_" + step, "yes");
+      alert("অ্যাড ক্লিক হয়েছে!");
+    }
+
+    function nextStep(step) {
+      steps[currentStep].classList.remove("active");
+      currentStep++;
+      steps[currentStep].classList.add("active");
+      startTimer(currentStep + 1);
+    }
+
+    function goToDownloadPage() {
+      sessionStorage.setItem("adPassed", "yes");
+      window.location.href = target;
+    }
+  </script>
 
 </body>
 </html>
