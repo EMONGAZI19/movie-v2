@@ -34,32 +34,32 @@
 <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
 
 <div id="steps">
-  <div class="step active" id="step1">
+  <div class="step" id="step1">
     <h2>Step 1 of 3</h2>
     <div class="download-banner">
-      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdDone(1)">
         <img src="Download.png" alt="Download">
       </a>
     </div>
     <div class="timer" id="timer1">২০</div>
-    <button onclick="goToAdThenNext(1)">পরবর্তী ধাপ</button>
+    <button onclick="nextStep()">পরবর্তী ধাপ</button>
   </div>
 
   <div class="step" id="step2">
     <h2>Step 2 of 3</h2>
     <div class="download-banner">
-      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdDone(2)">
         <img src="Download.png" alt="Download">
       </a>
     </div>
     <div class="timer" id="timer2">২০</div>
-    <button onclick="goToAdThenNext(2)">পরবর্তী ধাপ</button>
+    <button onclick="nextStep()">পরবর্তী ধাপ</button>
   </div>
 
   <div class="step" id="step3">
     <h2>Step 3 of 3</h2>
     <div class="download-banner">
-      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdDone(3)">
         <img src="Download.png" alt="Download">
       </a>
     </div>
@@ -70,34 +70,28 @@
 
 <script>
   const movieLinks = {
-    "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
+    "dkf83kdi2kdlsl2": "borbaad.html",
     "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
   };
 
   const steps = document.querySelectorAll('.step');
-  let currentStep = 0;
-  let target = "";
   const params = new URLSearchParams(window.location.search);
   const ref = params.get("ref");
+  let currentStep = 1;
 
   if (!ref || !movieLinks[ref]) {
     document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
   } else {
-    target = movieLinks[ref];
-
-    const adStep = sessionStorage.getItem("adStep");
-    if (adStep !== null) {
-      currentStep = parseInt(adStep);
-      showStep(currentStep);
-      sessionStorage.removeItem("adStep");
-    } else {
-      showStep(0);
-    }
-    startTimer(currentStep + 1);
+    const savedStep = parseInt(sessionStorage.getItem("step")) || 1;
+    currentStep = savedStep;
+    showStep(currentStep);
+    startTimer(currentStep);
   }
 
-  function showStep(stepIndex) {
-    steps.forEach((step, i) => step.classList.toggle("active", i === stepIndex));
+  function showStep(stepNum) {
+    steps.forEach((step, index) => {
+      step.classList.toggle("active", index === stepNum - 1);
+    });
   }
 
   function startTimer(stepNum) {
@@ -105,24 +99,37 @@
     const btn = timerEl.nextElementSibling;
     let count = 20;
     timerEl.textContent = count;
+    btn.style.display = "none";
+
     const countdown = setInterval(() => {
       count--;
       timerEl.textContent = count;
       if (count <= 0) {
         clearInterval(countdown);
-        btn.style.display = "inline-block";
+        // Check if ad is already done
+        if (sessionStorage.getItem("ad_done_step_" + stepNum) === "yes") {
+          btn.style.display = "inline-block";
+        }
       }
     }, 1000);
   }
 
-  function goToAdThenNext(step) {
-    sessionStorage.setItem("adStep", step);
-    window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
+  function markAdDone(stepNum) {
+    sessionStorage.setItem("ad_done_step_" + stepNum, "yes");
+  }
+
+  function nextStep() {
+    if (currentStep < 3) {
+      currentStep++;
+      sessionStorage.setItem("step", currentStep);
+      showStep(currentStep);
+      startTimer(currentStep);
+    }
   }
 
   function goToMain() {
-    sessionStorage.setItem("adPassed", "yes");
-    window.location.href = target;
+    sessionStorage.removeItem("step");
+    window.location.href = movieLinks[ref];
   }
 </script>
 
