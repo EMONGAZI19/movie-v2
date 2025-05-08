@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>মুভি ডাউনলোড ধাপ</title>
+  <title>Movie Flix</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { background: #111; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
@@ -20,10 +20,10 @@
 </head>
 <body>
 
-<header>মুভি ডাউনলোড সিস্টেম</header>
+<header>Movie Flix</header>
 
 <main>
-  <h1>ডাউনলোড শুরু করতে নিচের ধাপগুলো অনুসরণ করুন</h1>
+  <h1> মুভি পেজ শুরু করতে নিচের ধাপগুলো অনুসরণ করুন</h1>
 
   <div id="steps">
     <!-- Step Template -->
@@ -33,7 +33,7 @@
         <img src="Download.png" class="ad-image" alt="Download Ad">
       </a>
       <div class="timer" id="timer1">২০</div>
-      <button id="btn1" onclick="handleNextClick(1)">পরবর্তী ধাপ</button>
+      <button id="btn1" onclick="handleNextClick(1)">Next Step Click Here</button>
     </div>
 
     <div class="step" id="step2">
@@ -42,7 +42,7 @@
         <img src="Download.png" class="ad-image" alt="Download Ad">
       </a>
       <div class="timer" id="timer2">২০</div>
-      <button id="btn2" onclick="handleNextClick(2)">পরবর্তী ধাপ</button>
+      <button id="btn2" onclick="handleNextClick(2)">Next Step Click Here</button>
     </div>
 
     <div class="step" id="step3">
@@ -51,25 +51,25 @@
         <img src="Download.png" class="ad-image" alt="Download Ad">
       </a>
       <div class="timer" id="timer3">২০</div>
-      <button id="btn3" onclick="goToFinalPage()">মূল পেজে যান</button>
+      <button id="btn3" onclick="goToFinalPage()">Movie & Download Page</button>
     </div>
   </div>
 
   <div class="guide">
     <strong>কিভাবে ডাউনলোড করবেন?</strong><br>
     ১. প্রতিটি ধাপে "Download" ছবিতে ক্লিক করুন<br>
-    ২. অ্যাড পেজে গেলে ব্যাক করুন<br>
-    ৩. পরবর্তী ধাপে যেতে "পরবর্তী ধাপ" বাটনে ক্লিক করুন<br>
-    ৪. শেষ ধাপে গেলে মূল ডাউনলোড লিংকে যাবেন
+    ২. অ্যাড পেজে গেলে ১৫ সেকেন্ড অপেক্ষা করুন,তারপর ব্যাক করুন<br>
+    ৩. পরবর্তী ধাপে যেতে "Next Step Click Here" বাটনে ক্লিক করুন<br>
+    ৪. শেষ ধাপে গেলে "Movie & Download"বাটনে ক্লিক করুন
   </div>
 </main>
 
-<footer>&copy; 2025 MyMovieSite | All rights reserved</footer>
+<footer>&copy; 2025 Movie Flix | All rights reserved</footer>
 
 <script>
   const movieLinks = {
-    "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
-    "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
+    "dkf83kdi2kdlsl2": "borbaad.html",
+    "a7dks73djd": "pathaan.html"
   };
 
   const steps = document.querySelectorAll('.step');
@@ -80,7 +80,7 @@
   const ref = params.get("ref");
 
   if (!ref || !movieLinks[ref]) {
-    document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
+    document.body.innerHTML = "<h2>ভুল ও মেয়াদোত্তীর্ণ লিংক অনুগ্রহ করে ওয়েবসাইট ভিজিট করুন!</h2>";
   } else {
     target = movieLinks[ref];
     if (sessionStorage.getItem("adPassed") === "yes") {
