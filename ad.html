@@ -7,7 +7,6 @@
   <style>
     body { background: #111; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
     h1 { font-size: 22px; margin-bottom: 10px; }
-    h2 { margin: 10px 0; }
     .step { display: none; }
     .step.active { display: block; }
     .download-banner { margin: 15px 0; }
@@ -32,106 +31,100 @@
 </head>
 <body>
 
-  <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
+<h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
 
-  <div id="steps">
-    <!-- Step 1 -->
-    <div class="step active" id="step1">
-      <h2>Step 1 of 3</h2>
-
-      <div class="download-banner">
-        <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
-          <img src="Download.png" alt="Download">
-        </a>
-      </div>
-
-      <div class="timer" id="timer1">২০</div>
-      <button onclick="nextStep()">পরবর্তী ধাপ</button>
+<div id="steps">
+  <div class="step active" id="step1">
+    <h2>Step 1 of 3</h2>
+    <div class="download-banner">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
+        <img src="Download.png" alt="Download">
+      </a>
     </div>
-
-    <!-- Step 2 -->
-    <div class="step" id="step2">
-      <h2>Step 2 of 3</h2>
-
-      <div class="download-banner">
-        <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
-          <img src="Download.png" alt="Download">
-        </a>
-      </div>
-
-      <div class="timer" id="timer2">২০</div>
-      <button onclick="nextStep()">পরবর্তী ধাপ</button>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="step" id="step3">
-      <h2>Step 3 of 3</h2>
-
-      <div class="download-banner">
-        <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
-          <img src="Download.png" alt="Download">
-        </a>
-      </div>
-
-      <div class="timer" id="timer3">২০</div>
-      <button onclick="goToAd()">মূল পেজে যান</button>
-    </div>
+    <div class="timer" id="timer1">২০</div>
+    <button onclick="goToAdThenNext(1)">পরবর্তী ধাপ</button>
   </div>
 
-  <script>
-    const movieLinks = {
-      "dkf83kdi2kdlsl2": "borbaad.html",
-      "a7dks73djd": "pathaan.html"
-    };
+  <div class="step" id="step2">
+    <h2>Step 2 of 3</h2>
+    <div class="download-banner">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
+        <img src="Download.png" alt="Download">
+      </a>
+    </div>
+    <div class="timer" id="timer2">২০</div>
+    <button onclick="goToAdThenNext(2)">পরবর্তী ধাপ</button>
+  </div>
 
-    const steps = document.querySelectorAll('.step');
-    let currentStep = 0;
-    let target = "";
+  <div class="step" id="step3">
+    <h2>Step 3 of 3</h2>
+    <div class="download-banner">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank">
+        <img src="Download.png" alt="Download">
+      </a>
+    </div>
+    <div class="timer" id="timer3">২০</div>
+    <button onclick="goToMain()">মূল পেজে যান</button>
+  </div>
+</div>
 
-    const params = new URLSearchParams(window.location.search);
-    const ref = params.get("ref");
+<script>
+  const movieLinks = {
+    "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
+    "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
+  };
 
-    if (!ref || !movieLinks[ref]) {
-      document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
+  const steps = document.querySelectorAll('.step');
+  let currentStep = 0;
+  let target = "";
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref");
+
+  if (!ref || !movieLinks[ref]) {
+    document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
+  } else {
+    target = movieLinks[ref];
+
+    const adStep = sessionStorage.getItem("adStep");
+    if (adStep !== null) {
+      currentStep = parseInt(adStep);
+      showStep(currentStep);
+      sessionStorage.removeItem("adStep");
     } else {
-      target = movieLinks[ref];
-
-      if (sessionStorage.getItem("adPassed") === "yes") {
-        sessionStorage.removeItem("adPassed");
-        window.location.href = target;
-      } else {
-        startTimer(1);
-      }
+      showStep(0);
     }
+    startTimer(currentStep + 1);
+  }
 
-    function startTimer(step) {
-      const timerEl = document.getElementById("timer" + step);
-      const btn = timerEl.nextElementSibling;
-      let count = 20;
+  function showStep(stepIndex) {
+    steps.forEach((step, i) => step.classList.toggle("active", i === stepIndex));
+  }
+
+  function startTimer(stepNum) {
+    const timerEl = document.getElementById("timer" + stepNum);
+    const btn = timerEl.nextElementSibling;
+    let count = 20;
+    timerEl.textContent = count;
+    const countdown = setInterval(() => {
+      count--;
       timerEl.textContent = count;
+      if (count <= 0) {
+        clearInterval(countdown);
+        btn.style.display = "inline-block";
+      }
+    }, 1000);
+  }
 
-      const countdown = setInterval(() => {
-        count--;
-        timerEl.textContent = count;
-        if (count <= 0) {
-          clearInterval(countdown);
-          btn.style.display = "inline-block";
-        }
-      }, 1000);
-    }
+  function goToAdThenNext(step) {
+    sessionStorage.setItem("adStep", step);
+    window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
+  }
 
-    function nextStep() {
-      steps[currentStep].classList.remove("active");
-      currentStep++;
-      steps[currentStep].classList.add("active");
-      startTimer(currentStep + 1);
-    }
-
-    function goToAd() {
-      sessionStorage.setItem("adPassed", "yes");
-      window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
-    }
-  </script>
+  function goToMain() {
+    sessionStorage.setItem("adPassed", "yes");
+    window.location.href = target;
+  }
+</script>
 
 </body>
 </html>
