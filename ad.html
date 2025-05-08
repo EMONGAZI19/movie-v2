@@ -64,7 +64,6 @@
     };
 
     const steps = document.querySelectorAll('.step');
-    let currentStep = 0;
     let target = "";
 
     const params = new URLSearchParams(window.location.search);
@@ -78,13 +77,34 @@
         sessionStorage.removeItem("adPassed");
         window.location.href = target;
       } else {
+        initSteps();
+      }
+    }
+
+    function initSteps() {
+      const step1Done = sessionStorage.getItem("ad_done_step_1") && sessionStorage.getItem("ad_click_step_1");
+      const step2Done = sessionStorage.getItem("ad_done_step_2") && sessionStorage.getItem("ad_click_step_2");
+
+      if (step2Done) {
+        showStep(3);
+        startTimer(3);
+      } else if (step1Done) {
+        showStep(2);
+        startTimer(2);
+      } else {
+        showStep(1);
         startTimer(1);
       }
     }
 
+    function showStep(stepNumber) {
+      steps.forEach(step => step.classList.remove("active"));
+      document.getElementById("step" + stepNumber).classList.add("active");
+    }
+
     function startTimer(step) {
       const timerEl = document.getElementById("timer" + step);
-      const btn = document.getElementById("btn" + step);
+      const btnEl = document.getElementById("btn" + step);
       let count = 20;
       timerEl.textContent = count;
 
@@ -93,21 +113,30 @@
         timerEl.textContent = count;
         if (count <= 0) {
           clearInterval(countdown);
-          checkAdThenShowButton(step, btn);
+          checkAndShowButton(step, btnEl);
+        }
+      }, 1000);
+
+      // Fix: Run check every second if user comes back from ad early
+      const checker = setInterval(() => {
+        if (
+          sessionStorage.getItem("ad_done_step_" + step) === "yes" &&
+          sessionStorage.getItem("ad_click_step_" + step) === "yes" &&
+          count <= 0
+        ) {
+          btnEl.style.display = "inline-block";
+          clearInterval(checker);
         }
       }, 1000);
     }
 
-    function checkAdThenShowButton(step, btnEl) {
-      const checkInterval = setInterval(() => {
-        if (
-          sessionStorage.getItem("ad_done_step_" + step) === "yes" &&
-          sessionStorage.getItem("ad_click_step_" + step) === "yes"
-        ) {
-          btnEl.style.display = "inline-block";
-          clearInterval(checkInterval);
-        }
-      }, 1000);
+    function checkAndShowButton(step, btnEl) {
+      if (
+        sessionStorage.getItem("ad_done_step_" + step) === "yes" &&
+        sessionStorage.getItem("ad_click_step_" + step) === "yes"
+      ) {
+        btnEl.style.display = "inline-block";
+      }
     }
 
     function handleAdClick(step) {
@@ -124,22 +153,6 @@
       sessionStorage.setItem("adPassed", "yes");
       window.location.href = target;
     }
-
-    // Show current step on load if already visited
-    window.addEventListener("load", () => {
-      if (sessionStorage.getItem("ad_done_step_1") && sessionStorage.getItem("ad_click_step_1")) {
-        document.getElementById("step1").classList.remove("active");
-        currentStep = 1;
-        document.getElementById("step2").classList.add("active");
-        startTimer(2);
-      }
-      if (sessionStorage.getItem("ad_done_step_2") && sessionStorage.getItem("ad_click_step_2")) {
-        document.getElementById("step2").classList.remove("active");
-        currentStep = 2;
-        document.getElementById("step3").classList.add("active");
-        startTimer(3);
-      }
-    });
   </script>
 </body>
 </html>
