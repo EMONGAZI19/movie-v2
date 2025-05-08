@@ -13,11 +13,16 @@
     .timer { font-size: 24px; color: #f55; margin: 10px 0; }
     button { padding: 10px 20px; font-size: 18px; background: crimson; color: white; border: none; cursor: pointer; display: none; }
     .download-img { width: 100%; cursor: pointer; }
+    header, footer { background: #222; color: #fff; padding: 15px; }
+    footer { margin-top: 30px; font-size: 14px; }
   </style>
 </head>
 <body>
 
-  <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
+  <!-- Header -->
+  <header>
+    <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
+  </header>
 
   <div id="steps">
     <!-- Step 1 -->
@@ -53,6 +58,11 @@
       <button id="btn3" onclick="goToDownloadPage()">মূল পেজে যান</button>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>ডাউনলোড করতে চাইলে, উপরের ধাপগুলো অনুসরণ করুন।</p>
+  </footer>
 
   <script>
     const movieLinks = {
