@@ -5,154 +5,152 @@
   <title>মুভি ডাউনলোড ধাপ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { background: #111; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-    h1 { font-size: 22px; margin-bottom: 10px; }
+    body { background: #111; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
+    header, footer { background: #222; padding: 15px; text-align: center; font-size: 18px; }
+    main { padding: 20px; text-align: center; }
+    h1 { font-size: 20px; margin-bottom: 10px; }
+    h2 { font-size: 18px; margin: 10px 0; }
     .step { display: none; }
     .step.active { display: block; }
-    .timer { font-size: 24px; color: #f55; margin: 10px 0; }
-    button { padding: 10px 20px; font-size: 18px; background: crimson; color: white; border: none; cursor: pointer; display: none; margin-top: 10px; }
-    img.download-img { width: 80%; max-width: 300px; cursor: pointer; margin: 15px 0; }
-    footer { margin-top: 40px; font-size: 14px; color: #aaa; }
-    .help-box { background: #222; padding: 10px; margin: 20px 0; border: 1px solid #333; border-radius: 6px; }
+    .timer { font-size: 24px; color: #ff4444; margin: 10px 0; }
+    button { padding: 10px 20px; font-size: 16px; background: crimson; color: white; border: none; cursor: pointer; display: none; }
+    img.ad-image { max-width: 90%; margin: 15px auto; cursor: pointer; border: 2px solid #444; border-radius: 10px; }
+    .guide { background: #222; padding: 15px; margin-top: 20px; border: 1px dashed #555; font-size: 16px; }
   </style>
 </head>
 <body>
 
-  <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
+<header>মুভি ডাউনলোড সিস্টেম</header>
 
-  <div class="help-box">
-    <strong>কিভাবে ডাউনলোড করবেন:</strong><br>
-    প্রতিটি ধাপে ডাউনলোড বাটনে ক্লিক করুন, Ad পেজে গিয়ে ব্যাক করে আসুন। তারপর “পরবর্তী ধাপ” বাটনে ক্লিক করে পরবর্তী ধাপে যান।
-  </div>
+<main>
+  <h1>ডাউনলোড শুরু করতে নিচের ধাপগুলো অনুসরণ করুন</h1>
 
   <div id="steps">
-    <!-- Step 1 -->
+    <!-- Step Template -->
     <div class="step active" id="step1">
       <h2>Step 1 of 3</h2>
-      <img src="Download.png" alt="Download" class="download-img" onclick="handleAdClick(1)">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdClick(1)">
+        <img src="Download.png" class="ad-image" alt="Download Ad">
+      </a>
       <div class="timer" id="timer1">২০</div>
-      <button id="btn1" onclick="nextStep(1)">পরবর্তী ধাপ</button>
+      <button id="btn1" onclick="handleNextClick(1)">পরবর্তী ধাপ</button>
     </div>
 
-    <!-- Step 2 -->
     <div class="step" id="step2">
       <h2>Step 2 of 3</h2>
-      <img src="Download.png" alt="Download" class="download-img" onclick="handleAdClick(2)">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdClick(2)">
+        <img src="Download.png" class="ad-image" alt="Download Ad">
+      </a>
       <div class="timer" id="timer2">২০</div>
-      <button id="btn2" onclick="nextStep(2)">পরবর্তী ধাপ</button>
+      <button id="btn2" onclick="handleNextClick(2)">পরবর্তী ধাপ</button>
     </div>
 
-    <!-- Step 3 -->
     <div class="step" id="step3">
       <h2>Step 3 of 3</h2>
-      <img src="Download.png" alt="Download" class="download-img" onclick="handleAdClick(3)">
+      <a href="https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb" target="_blank" onclick="markAdClick(3)">
+        <img src="Download.png" class="ad-image" alt="Download Ad">
+      </a>
       <div class="timer" id="timer3">২০</div>
-      <button id="btn3" onclick="goToDownloadPage()">মূল পেজে যান</button>
+      <button id="btn3" onclick="goToFinalPage()">মূল পেজে যান</button>
     </div>
   </div>
 
-  <footer>
-    &copy; 2025 আপনার মুভি সাইট। সকল অধিকার সংরক্ষিত।
-  </footer>
+  <div class="guide">
+    <strong>কিভাবে ডাউনলোড করবেন?</strong><br>
+    ১. প্রতিটি ধাপে "Download" ছবিতে ক্লিক করুন<br>
+    ২. অ্যাড পেজে গেলে ব্যাক করুন<br>
+    ৩. পরবর্তী ধাপে যেতে "পরবর্তী ধাপ" বাটনে ক্লিক করুন<br>
+    ৪. শেষ ধাপে গেলে মূল ডাউনলোড লিংকে যাবেন
+  </div>
+</main>
 
-  <script>
-    const adLink = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
+<footer>&copy; 2025 MyMovieSite | All rights reserved</footer>
 
-    const movieLinks = {
-      "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
-      "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
-    };
+<script>
+  const movieLinks = {
+    "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
+    "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
+  };
 
-    const steps = document.querySelectorAll('.step');
-    let target = "";
+  const steps = document.querySelectorAll('.step');
+  let currentStep = 0;
+  let target = "";
 
-    const params = new URLSearchParams(window.location.search);
-    const ref = params.get("ref");
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref");
 
-    if (!ref || !movieLinks[ref]) {
-      document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
-    } else {
-      target = movieLinks[ref];
-      if (sessionStorage.getItem("adPassed") === "yes") {
-        sessionStorage.removeItem("adPassed");
-        window.location.href = target;
-      } else {
-        initSteps();
-      }
-    }
-
-    function initSteps() {
-      const step1Done = sessionStorage.getItem("ad_done_step_1") && sessionStorage.getItem("ad_click_step_1");
-      const step2Done = sessionStorage.getItem("ad_done_step_2") && sessionStorage.getItem("ad_click_step_2");
-
-      if (step2Done) {
-        showStep(3);
-        startTimer(3);
-      } else if (step1Done) {
-        showStep(2);
-        startTimer(2);
-      } else {
-        showStep(1);
-        startTimer(1);
-      }
-    }
-
-    function showStep(stepNumber) {
-      steps.forEach(step => step.classList.remove("active"));
-      document.getElementById("step" + stepNumber).classList.add("active");
-    }
-
-    function startTimer(step) {
-      const timerEl = document.getElementById("timer" + step);
-      const btnEl = document.getElementById("btn" + step);
-      let count = 20;
-      timerEl.textContent = count;
-
-      const countdown = setInterval(() => {
-        count--;
-        timerEl.textContent = count;
-        if (count <= 0) {
-          clearInterval(countdown);
-          checkAndShowButton(step, btnEl);
-        }
-      }, 1000);
-
-      // Fix: Run check every second if user comes back from ad early
-      const checker = setInterval(() => {
-        if (
-          sessionStorage.getItem("ad_done_step_" + step) === "yes" &&
-          sessionStorage.getItem("ad_click_step_" + step) === "yes" &&
-          count <= 0
-        ) {
-          btnEl.style.display = "inline-block";
-          clearInterval(checker);
-        }
-      }, 1000);
-    }
-
-    function checkAndShowButton(step, btnEl) {
-      if (
-        sessionStorage.getItem("ad_done_step_" + step) === "yes" &&
-        sessionStorage.getItem("ad_click_step_" + step) === "yes"
-      ) {
-        btnEl.style.display = "inline-block";
-      }
-    }
-
-    function handleAdClick(step) {
-      sessionStorage.setItem("ad_done_step_" + step, "yes");
-      window.location.href = adLink;
-    }
-
-    function nextStep(step) {
-      sessionStorage.setItem("ad_click_step_" + step, "yes");
-      window.location.href = adLink;
-    }
-
-    function goToDownloadPage() {
-      sessionStorage.setItem("adPassed", "yes");
+  if (!ref || !movieLinks[ref]) {
+    document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
+  } else {
+    target = movieLinks[ref];
+    if (sessionStorage.getItem("adPassed") === "yes") {
+      sessionStorage.removeItem("adPassed");
       window.location.href = target;
+    } else {
+      startTimer(1);
     }
-  </script>
+  }
+
+  function startTimer(step) {
+    const timerEl = document.getElementById("timer" + step);
+    const btn = document.getElementById("btn" + step);
+    let count = 20;
+    timerEl.textContent = count;
+
+    const countdown = setInterval(() => {
+      count--;
+      timerEl.textContent = count;
+      if (count <= 0) {
+        clearInterval(countdown);
+        checkAdAndShowBtn(step, btn);
+      }
+    }, 1000);
+
+    // যদি ইউজার আগে ad ক্লিক করে আসে
+    const checkReturn = setInterval(() => {
+      if (count <= 0 && sessionStorage.getItem("ad_click_step_" + step) === "yes") {
+        btn.style.display = "inline-block";
+        clearInterval(checkReturn);
+      }
+    }, 1000);
+  }
+
+  function markAdClick(step) {
+    sessionStorage.setItem("ad_click_step_" + step, "yes");
+  }
+
+  function checkAdAndShowBtn(step, btnEl) {
+    const check = setInterval(() => {
+      if (sessionStorage.getItem("ad_click_step_" + step) === "yes") {
+        btnEl.style.display = "inline-block";
+        clearInterval(check);
+      }
+    }, 1000);
+  }
+
+  function handleNextClick(step) {
+    window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
+    sessionStorage.setItem("ad_done_step_" + step, "yes");
+
+    // delay switch handled on return
+    setTimeout(() => {
+      if (sessionStorage.getItem("ad_done_step_" + step) === "yes") {
+        steps[currentStep].classList.remove("active");
+        currentStep++;
+        steps[currentStep].classList.add("active");
+        startTimer(currentStep + 1);
+      }
+    }, 1000);
+  }
+
+  function goToFinalPage() {
+    sessionStorage.setItem("adPassed", "yes");
+    window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
+    setTimeout(() => {
+      window.location.href = target;
+    }, 2000);
+  }
+</script>
+
 </body>
 </html>
