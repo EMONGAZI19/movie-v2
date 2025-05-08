@@ -9,62 +9,55 @@
     h1 { font-size: 22px; margin-bottom: 10px; }
     .step { display: none; }
     .step.active { display: block; }
-    .ad-box { margin: 10px 0; background: #222; padding: 10px; border: 1px dashed #444; }
     .timer { font-size: 24px; color: #f55; margin: 10px 0; }
-    button { padding: 10px 20px; font-size: 18px; background: crimson; color: white; border: none; cursor: pointer; display: none; }
-    .download-img { width: 100%; cursor: pointer; }
-    header, footer { background: #222; color: #fff; padding: 15px; }
-    footer { margin-top: 30px; font-size: 14px; }
+    button { padding: 10px 20px; font-size: 18px; background: crimson; color: white; border: none; cursor: pointer; display: none; margin-top: 10px; }
+    img.download-img { width: 80%; max-width: 300px; cursor: pointer; margin: 15px 0; }
+    footer { margin-top: 40px; font-size: 14px; color: #aaa; }
+    .help-box { background: #222; padding: 10px; margin: 20px 0; border: 1px solid #333; border-radius: 6px; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
-  </header>
+  <h1>মুভি ডাউনলোডের পূর্বে নিচের ধাপগুলো সম্পন্ন করুন</h1>
+
+  <div class="help-box">
+    <strong>কিভাবে ডাউনলোড করবেন:</strong><br>
+    প্রতিটি ধাপে ডাউনলোড বাটনে ক্লিক করুন, Ad পেজে গিয়ে ব্যাক করে আসুন। তারপর “পরবর্তী ধাপ” বাটনে ক্লিক করে পরবর্তী ধাপে যান।
+  </div>
 
   <div id="steps">
     <!-- Step 1 -->
     <div class="step active" id="step1">
       <h2>Step 1 of 3</h2>
-      <div class="ad-box">
-        <!-- Download Image - Step 1 -->
-        <img src="https://via.placeholder.com/468x60.png" alt="Download Ad" class="download-img" onclick="handleAdClick(1)">
-      </div>
+      <img src="Download.png" alt="Download" class="download-img" onclick="handleAdClick(1)">
       <div class="timer" id="timer1">২০</div>
-      <button id="btn1" onclick="nextStep(1)" style="display:none;">পরবর্তী ধাপ</button>
+      <button id="btn1" onclick="nextStep(1)">পরবর্তী ধাপ</button>
     </div>
 
     <!-- Step 2 -->
     <div class="step" id="step2">
       <h2>Step 2 of 3</h2>
-      <div class="ad-box">
-        <!-- Download Image - Step 2 -->
-        <img src="https://via.placeholder.com/468x60.png" alt="Download Ad" class="download-img" onclick="handleAdClick(2)">
-      </div>
+      <img src="Download.png" alt="Download" class="download-img" onclick="handleAdClick(2)">
       <div class="timer" id="timer2">২০</div>
-      <button id="btn2" onclick="nextStep(2)" style="display:none;">পরবর্তী ধাপ</button>
+      <button id="btn2" onclick="nextStep(2)">পরবর্তী ধাপ</button>
     </div>
 
     <!-- Step 3 -->
     <div class="step" id="step3">
       <h2>Step 3 of 3</h2>
-      <div class="ad-box">
-        <!-- Download Image - Step 3 -->
-        <img src="https://via.placeholder.com/468x60.png" alt="Download Ad" class="download-img" onclick="handleAdClick(3)">
-      </div>
+      <img src="Download.png" alt="Download" class="download-img" onclick="handleAdClick(3)">
       <div class="timer" id="timer3">২০</div>
       <button id="btn3" onclick="goToDownloadPage()">মূল পেজে যান</button>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p>ডাউনলোড করতে চাইলে, উপরের ধাপগুলো অনুসরণ করুন।</p>
+    &copy; 2025 আপনার মুভি সাইট। সকল অধিকার সংরক্ষিত।
   </footer>
 
   <script>
+    const adLink = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
+
     const movieLinks = {
       "dkf83kdi2kdlsl2": "https://mymoviesite.com/movies/borbaad.html",
       "a7dks73djd": "https://mymoviesite.com/movies/pathaan.html"
@@ -81,7 +74,6 @@
       document.body.innerHTML = "<h2>ভুল বা মেয়াদোত্তীর্ণ লিংক!</h2>";
     } else {
       target = movieLinks[ref];
-
       if (sessionStorage.getItem("adPassed") === "yes") {
         sessionStorage.removeItem("adPassed");
         window.location.href = target;
@@ -108,7 +100,10 @@
 
     function checkAdThenShowButton(step, btnEl) {
       const checkInterval = setInterval(() => {
-        if (sessionStorage.getItem("ad_done_step_" + step) === "yes") {
+        if (
+          sessionStorage.getItem("ad_done_step_" + step) === "yes" &&
+          sessionStorage.getItem("ad_click_step_" + step) === "yes"
+        ) {
           btnEl.style.display = "inline-block";
           clearInterval(checkInterval);
         }
@@ -117,21 +112,34 @@
 
     function handleAdClick(step) {
       sessionStorage.setItem("ad_done_step_" + step, "yes");
-      alert("অ্যাড ক্লিক হয়েছে!");
+      window.location.href = adLink;
     }
 
     function nextStep(step) {
-      steps[currentStep].classList.remove("active");
-      currentStep++;
-      steps[currentStep].classList.add("active");
-      startTimer(currentStep + 1);
+      sessionStorage.setItem("ad_click_step_" + step, "yes");
+      window.location.href = adLink;
     }
 
     function goToDownloadPage() {
       sessionStorage.setItem("adPassed", "yes");
       window.location.href = target;
     }
-  </script>
 
+    // Show current step on load if already visited
+    window.addEventListener("load", () => {
+      if (sessionStorage.getItem("ad_done_step_1") && sessionStorage.getItem("ad_click_step_1")) {
+        document.getElementById("step1").classList.remove("active");
+        currentStep = 1;
+        document.getElementById("step2").classList.add("active");
+        startTimer(2);
+      }
+      if (sessionStorage.getItem("ad_done_step_2") && sessionStorage.getItem("ad_click_step_2")) {
+        document.getElementById("step2").classList.remove("active");
+        currentStep = 2;
+        document.getElementById("step3").classList.add("active");
+        startTimer(3);
+      }
+    });
+  </script>
 </body>
 </html>
