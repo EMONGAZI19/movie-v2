@@ -63,17 +63,7 @@
         }
       }, 1000);
     }
-// script.js বা ad.html এর ভিতরে এই অংশ রাখুন
-const links = {
-  "dkf83kdi2kdlsl2": "borbaad.html",
-  "hd3jf9fj9fj23f": "movie2.html",
-  "skd8e3f3j9d9s9": "movie3.html"
-};
 
-const params = new URLSearchParams(window.location.search);
-const ref = params.get("ref");
-const targetPage = links[ref];
-    
     function nextStep() {
       steps[currentStep].classList.remove("active");
       currentStep++;
