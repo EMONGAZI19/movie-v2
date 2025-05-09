@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Flix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background: #111; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
+    header, footer { background: #222; padding: 15px; text-align: center; font-size: 18px; }
+    main { padding: 20px; text-align: center; }
+    h1 { font-size: 20px; margin-bottom: 10px; }
+    h2 { font-size: 18px; margin: 10px 0; }
+    .step { display: none; }
+    .step.active { display: block; }
+    .timer { font-size: 24px; color: #ff4444; margin: 10px 0; }
+    button { padding: 10px 20px; font-size: 16px; background: crimson; color: white; border: none; cursor: pointer; display: none; }
+    img.ad-image { max-width: 90%; margin: 15px auto; cursor: pointer; border: 2px solid #444; border-radius: 10px; }
+    .guide { background: #222; padding: 15px; margin-top: 20px; border: 1px dashed #555; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+<header>Movie Flix</header>
+
+<main>
+  <h1> মুভি পেজ শুরু করতে নিচের ধাপগুলো অনুসরণ করুন</h1>
+
+  <div id="steps">
+    <!-- Step Template -->
+    <div class="step active" id="step1">
+      <h2>Step 1 of 3</h2>
+      <a href="https://www.profitableratecpm.com/u5q906tchd?key=2eb22859b39aa3c7122d197bec0f2809" target="_blank" onclick="markAdClick(1)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp_UWibOMwK4lq8jqGTYO3cqnFdxbrVryHww&s" class="ad-image" alt="Download Ad">
+      </a>
+      <div class="timer" id="timer1">২০</div>
+      <button id="btn1" onclick="handleNextClick(1)">Next Step Click Here</button>
+    </div>
+
+    <div class="step" id="step2">
+      <h2>Step 2 of 3</h2>
+      <a href="https://www.profitableratecpm.com/u5q906tchd?key=2eb22859b39aa3c7122d197bec0f2809" target="_blank" onclick="markAdClick(2)">
+        <img src="https://www.pngall.com/wp-content/uploads/2/Download-Button-PNG-Image.png" class="ad-image" alt="Download Ad">
+      </a>
+      <div class="timer" id="timer2">২০</div>
+      <button id="btn2" onclick="handleNextClick(2)">Next Step Click Here</button>
+    </div>
+
+    <div class="step" id="step3">
+      <h2>Step 3 of 3</h2>
+      <a href="https://www.profitableratecpm.com/u5q906tchd?key=2eb22859b39aa3c7122d197bec0f2809" target="_blank" onclick="markAdClick(3)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-W_u96NeBL1UDa1rHEoku9sgJLgfocwWlpar008D5LrkTpjKz6-FnDNY&s=10" class="ad-image" alt="Download Ad">
+      </a>
+      <div class="timer" id="timer3">২০</div>
+      <button id="btn3" onclick="goToFinalPage()">Movie & Download Page</button>
+    </div>
+  </div>
+
+  <div class="guide">
+    <strong>কিভাবে ডাউনলোড করবেন?</strong><br>
+    ১. প্রতিটি ধাপে "Download" ছবিতে ক্লিক করুন<br>
+    ২. অ্যাড পেজে গেলে ১৫ সেকেন্ড অপেক্ষা করুন,তারপর ব্যাক করুন<br>
+    ৩. পরবর্তী ধাপে যেতে "Next Step Click Here" বাটনে ক্লিক করুন<br>
+    ৪. শেষ ধাপে গেলে "Movie & Download"বাটনে ক্লিক করুন
+  </div>
+</main>
+
+<footer>&copy; 2025 Movie Flix | All rights reserved</footer>
+
+<script>
+  const movieLinks = {
+    "dkf106": "emdkf11506.html",
+    "dkf112": "emoji12.html",
+    "dkf107": "emoji07.html",
+    "dkf113": "emoji13.html",
+    "dkf108": "emoji08.html",
+    "dkf114": "emoji14.html",
+    "dkf109": "emoji09.html",
+    "dkf115": "emoji15.html"
+  };
+
+  const steps = document.querySelectorAll('.step');
+  let currentStep = 0;
+  let target = "";
+
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref");
+
+  if (!ref || !movieLinks[ref]) {
+    document.body.innerHTML = "<h2>ভুল ও মেয়াদোত্তীর্ণ লিংক অনুগ্রহ করে ওয়েবসাইট ভিজিট করুন!</h2>";
+  } else {
+    target = movieLinks[ref];
+    if (sessionStorage.getItem("adPassed") === "yes") {
+      sessionStorage.removeItem("adPassed");
+      window.location.href = target;
+    } else {
+      startTimer(1);
+    }
+  }
+
+  function startTimer(step) {
+    const timerEl = document.getElementById("timer" + step);
+    const btn = document.getElementById("btn" + step);
+    let count = 20;
+    timerEl.textContent = count;
+
+    const countdown = setInterval(() => {
+      count--;
+      timerEl.textContent = count;
+      if (count <= 0) {
+        clearInterval(countdown);
+        checkAdAndShowBtn(step, btn);
+      }
+    }, 1000);
+
+    // যদি ইউজার আগে ad ক্লিক করে আসে
+    const checkReturn = setInterval(() => {
+      if (count <= 0 && sessionStorage.getItem("ad_click_step_" + step) === "yes") {
+        btn.style.display = "inline-block";
+        clearInterval(checkReturn);
+      }
+    }, 1000);
+  }
+
+  function markAdClick(step) {
+    sessionStorage.setItem("ad_click_step_" + step, "yes");
+  }
+
+  function checkAdAndShowBtn(step, btnEl) {
+    const check = setInterval(() => {
+      if (sessionStorage.getItem("ad_click_step_" + step) === "yes") {
+        btnEl.style.display = "inline-block";
+        clearInterval(check);
+      }
+    }, 1000);
+  }
+
+  function handleNextClick(step) {
+    window.location.href = "https://www.profitableratecpm.com/u5q906tchd?key=2eb22859b39aa3c7122d197bec0f2809";
+    sessionStorage.setItem("ad_done_step_" + step, "yes");
+
+    // delay switch handled on return
+    setTimeout(() => {
+      if (sessionStorage.getItem("ad_done_step_" + step) === "yes") {
+        steps[currentStep].classList.remove("active");
+        currentStep++;
+        steps[currentStep].classList.add("active");
+        startTimer(currentStep + 1);
+      }
+    }, 1000);
+  }
+
+  function goToFinalPage() {
+    sessionStorage.setItem("adPassed", "yes");
+    window.location.href = "https://www.profitableratecpm.com/u5q906tchd?key=2eb22859b39aa3c7122d197bec0f2809";
+    setTimeout(() => {
+      window.location.href = target;
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
