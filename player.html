@@ -29,17 +29,6 @@
       margin: 0;
     }
 
-    .movie-title-box {
-      margin: 20px 0;
-      padding: 10px;
-      background-color: #333;
-      border-radius: 5px;
-      width: 90%;
-      max-width: 900px;
-      text-align: center;
-      font-size: 1.5em;
-    }
-
     .player-container {
       width: 90%;
       max-width: 900px;
@@ -82,11 +71,6 @@
     <h1>Movie Flix Player</h1>
   </div>
 
-  <!-- Movie Title Box -->
-  <div class="movie-title-box" id="movieTitle">
-    Movie Title Loading...
-  </div>
-
   <!-- Video Player Container -->
   <div class="player-container">
     <video id="videoPlayer" controls autoplay></video>
@@ -103,19 +87,14 @@
   </footer>
 
   <script>
-    // URL থেকে ভিডিও লিংক এবং মুভির নাম বের করা
     const urlParams = new URLSearchParams(window.location.search);
     const videoUrl = urlParams.get('video');
-    const movieTitle = urlParams.get('title'); // "title" param দিয়ে মুভির নাম পাঠানো হবে
-
     const player = document.getElementById('videoPlayer');
-    const titleBox = document.getElementById('movieTitle');
 
-    if (videoUrl && movieTitle) {
+    if (videoUrl) {
       player.src = decodeURIComponent(videoUrl);
-      titleBox.textContent = decodeURIComponent(movieTitle);
     } else {
-      player.outerHTML = "<p style='color:white;text-align:center;'>ভিডিও লিংক বা মুভির নাম পাওয়া যায়নি।</p>";
+      player.outerHTML = "<p style='color:white;text-align:center;'>ভিডিও লিংক পাওয়া যায়নি।</p>";
     }
   </script>
 
