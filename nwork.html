@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Link Not Working</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #222;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #ff4444;
+      text-shadow: 1px 1px 4px rgba(255, 0, 0, 0.6);
+    }
+    .notice-box {
+      background-color: #1c1c1c;
+      border-left: 5px solid #ff4444;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 0 10px rgba(255, 68, 68, 0.1);
+      font-size: 16px;
+      line-height: 1.6;
+      position: relative;
+    }
+    .notice-box::before {
+      content: "NOTICE";
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      background-color: #ff4444;
+      color: #000;
+      font-weight: bold;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      box-shadow: 0 0 6px rgba(255, 68, 68, 0.2);
+    }
+    .notice-box strong {
+      color: #ff4444;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>LINK NOT WORKING</header>
+
+<div class="notice-box">
+  <p><strong>এই লিংকটি</strong> আপনার নেটওয়ার্ক দিয়ে কাজ করছে না। অনুগ্রহ করে <strong>অন্য লিংক</strong> চেষ্টা করুন।</p>
+  <p><strong>This link</strong> is not working with your current network. Please try using <strong>another link</strong>.</p>
+</div>
+
+<footer>
+  &copy; 2025 Movie Flix. All rights reserved.
+</footer>
+
+</body>
+</html>
