@@ -74,11 +74,6 @@
       cursor: pointer;
     }
 
-    .watch-btn:hover {
-      background-color: #00ddcc;
-      box-shadow: 0 0 20px #00ffeeaa;
-    }
-
     .movie-thumbnail {
       width: 100%;
       border-radius: 10px;
@@ -166,37 +161,29 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <a href="#" class="logo">Movie Flix</a>
     <a href="https://movieflix9.netlify.app" class="btn" target="_blank">Visit Website</a>
   </header>
 
-  <!-- Movie Content -->
   <div class="movie-container">
-    
-    <!-- Thumbnail -->
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ0qKEGPTu_KP8A8TXL5lP9_pn1mj7k2o5ep4Gm6lmMp4MP_x_vG6XtF1B&s=10" alt="The Bhootni (2025)" class="movie-thumbnail">
 
-    <!-- Notice Bar -->
     <div style="background-color: #ffcc00; color: #000; padding: 12px 20px; font-weight: bold; border-radius: 8px; text-align: center; margin: 20px 0; box-shadow: 0 0 10px #ffcc0055;">
-      Play Now বাটনে ক্লিক করার পরে <strong>১০ সেকেন্ড</strong> Ad পেজে থাকতে হবে। তারপর ব্যাক করে আসলে <strong>৫ সেকেন্ড</strong> পরে ভিডিও প্লে হবে, না হলে প্লে হবে না।
+      Play Now বাটনে ক্লিক করার পরে ১০ সেকেন্ড Ad পেজে থাকতে হবে। তারপর ব্যাক করলে ভিডিও প্লে হবে।
     </div>
 
-    <!-- Watch Buttons -->
     <div class="watch-buttons">
       <button id="playBtn" class="watch-btn">Play Now</button>
       <a href="https://youtu.be/L8Wfzxch7Xo?si=YiVfYKQ_Uiv1AtBp" target="_blank" class="watch-btn">Watch Trailer</a>
     </div>
 
-    <!-- Plyr Player -->
     <div class="player-wrapper" id="videoContainer">
       <video id="player" controls playsinline>
         <source src="https://version10.drivex.store/download.aspx?file=bi9o3RQO1yMLW7Yh9o0pnEu4uhNuQGXy1xvbK6gFF8CRjvIBAUsdXkJ9R2AdSNDM&expiry=Q0feIk0Tu0I0Ei7fns5G1g%3D%3D&mac=86586ee5e7a4e28ef4e458f2320e516d12c811c96822e6ab61c7b2c40735ca10=" type="video/mp4" />
       </video>
     </div>
 
-    <!-- Movie Details -->
     <div class="movie-details">
       <h2>The Bhootni (2025)</h2>
       <ul>
@@ -204,11 +191,10 @@
         <li><strong>Duration:</strong> Not Specified</li>
         <li><strong>Language:</strong> Hindi</li>
         <li><strong>Release Date:</strong> 1 May 2025</li>
-        <li><strong>Plot:</strong> At St. Vincent College, the Virgin Tree awakens a spirit every Valentine’s Day—drawn by the desire for true love. When Shantanu’s wish stirs her, 27 days of love and horror begin, ending in terror on Holika Dahan.</li>
+        <li><strong>Plot:</strong> At St. Vincent College, the Virgin Tree awakens a spirit every Valentine’s Day...</li>
       </ul>
     </div>
 
-    <!-- Screenshots -->
     <div class="screenshots">
       <h3>Screenshots</h3>
       <div class="screenshots-grid">
@@ -218,7 +204,6 @@
       </div>
     </div>
 
-    <!-- Download Section -->
     <div class="download-section">
       <h3>Download Links</h3>
       <div class="download-links">
@@ -233,12 +218,10 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 Movie Flix. All rights reserved.
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
   <script>
     const playBtn = document.getElementById("playBtn");
@@ -247,13 +230,13 @@
     let player;
 
     playBtn.addEventListener("click", () => {
-      sessionStorage.setItem("playAfterAd", "true");
+      localStorage.setItem("playAfterAd", "true");
       window.location.href = "https://www.profitableratecpm.com/c6enwfc3?key=9791fdddf7df25d113a29cbf2c79dfdb";
     });
 
-    window.addEventListener("load", () => {
-      if (sessionStorage.getItem("playAfterAd") === "true") {
-        sessionStorage.removeItem("playAfterAd");
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("playAfterAd") === "true") {
+        localStorage.removeItem("playAfterAd");
         container.style.display = "block";
 
         player = new Plyr('#player', {
@@ -261,11 +244,9 @@
           disableContextMenu: true
         });
 
-        setTimeout(() => {
-          video.play().catch(err => {
-            console.log("Autoplay failed:", err);
-          });
-        }, 5000); // ৫ সেকেন্ড অপেক্ষা করে প্লে
+        video.play().catch(err => {
+          console.log("Autoplay failed:", err);
+        });
       }
     });
   </script>
