@@ -2,139 +2,120 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>Watch Movie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movie Flix Player</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #1e1e1e;
+      font-family: Arial, sans-serif;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      justify-content: space-between;
     }
 
     .header {
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      font-size: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .header button {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .header button:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .header-title {
-      flex-grow: 1;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    iframe {
       width: 100%;
-      height: 90vh;
-      border: none;
-      background: #000;
-    }
-
-    .error-message {
       text-align: center;
-      padding: 50px 20px;
-      font-size: 20px;
-      color: #ddd;
+      padding: 20px;
+      background-color: #333;
     }
 
-    .loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 16px;
-      color: #eee;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .header h1 {
+      font-size: 2em;
+      margin: 0;
     }
 
-    .loader span {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 50%;
-      animation: bounce 0.6s infinite alternate;
+    .movie-title-box {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      width: 90%;
+      max-width: 900px;
+      text-align: center;
+      font-size: 1.5em;
     }
 
-    .loader span:nth-child(2) {
-      animation-delay: 0.2s;
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
     }
 
-    .loader span:nth-child(3) {
-      animation-delay: 0.4s;
+    video {
+      width: 100%;
+      height: auto;
+      background: black;
     }
 
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
+    .thank-you-message {
+      margin: 20px;
+      padding: 10px;
+      background-color: #444;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    footer {
+      background-color: #333;
+      color: #aaa;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
     }
   </style>
 </head>
 <body>
 
+  <!-- Header Section -->
   <div class="header">
-    <button onclick="history.back()">← ফিরে যান</button>
-    <div class="header-title">মুভি চলছে...</div>
-    <div style="width:40px;"></div>
+    <h1>Movie Flix Player</h1>
   </div>
 
-  <div class="loader" id="loader">
-    <span></span><span></span><span></span>
+  <!-- Movie Title Box -->
+  <div class="movie-title-box" id="movieTitle">
+    Movie Title Loading...
   </div>
 
-  <iframe id="moviePlayer" src="" allowfullscreen></iframe>
+  <!-- Video Player Container -->
+  <div class="player-container">
+    <video id="videoPlayer" controls autoplay></video>
+  </div>
 
-  <div id="errorMsg" class="error-message" style="display:none;">ভিডিও লিংক পাওয়া যায়নি!</div>
+  <!-- Thank You Message -->
+  <div class="thank-you-message">
+    Thank you for watching! Enjoy your movie.
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2025 Movie Flix. All rights reserved.</p>
+  </footer>
 
   <script>
+    // URL থেকে ভিডিও লিংক এবং মুভির নাম বের করা
     const urlParams = new URLSearchParams(window.location.search);
-    const streamLink = urlParams.get('stream');
-    const iframe = document.getElementById('moviePlayer');
-    const loader = document.getElementById('loader');
-    const errorMsg = document.getElementById('errorMsg');
+    const videoUrl = urlParams.get('video');
+    const movieTitle = urlParams.get('title'); // "title" param দিয়ে মুভির নাম পাঠানো হবে
 
-    if (streamLink) {
-      loader.style.display = 'flex';
-      iframe.src = streamLink;
+    const player = document.getElementById('videoPlayer');
+    const titleBox = document.getElementById('movieTitle');
 
-      iframe.onload = () => {
-        loader.style.display = 'none';
-      };
+    if (videoUrl && movieTitle) {
+      player.src = decodeURIComponent(videoUrl);
+      titleBox.textContent = decodeURIComponent(movieTitle);
     } else {
-      iframe.style.display = 'none';
-      loader.style.display = 'none';
-      errorMsg.style.display = 'block';
+      player.outerHTML = "<p style='color:white;text-align:center;'>ভিডিও লিংক বা মুভির নাম পাওয়া যায়নি।</p>";
     }
   </script>
 
